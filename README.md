@@ -1,4 +1,4 @@
-# nfs-prober
+# NFS Prober
 Golang NFS prober to measure mounting and read/write performance of multiple NFS instances.
 
 ## Prepare NFS instances
