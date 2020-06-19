@@ -22,6 +22,7 @@ $ mount 192.168.1.2:/nfs1 mymount && mkdir mymount/prober
 | --interval        | "60s"                  |    interval between each probe interation, valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h"  |
 | --timeout        | false                  |    timeout of probe operation, valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h"  |
 | --port        | 8080                  |    port for the web server to listen on  |
+| --version        | "nfs"                  |    nfs version to use, eg: nfs, nfs4  |
 
 
 
