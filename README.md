@@ -45,8 +45,8 @@ Please see main.go for available flags and their defaults.
 -  Q: I'm getting the error err="operation not permitted", I have to use sudo or docker --privileged=true flag, this seems dangerous.
 -  A: Yes it can be, but you have to mount the NFS instance and you need root privileges to do that. Don't run this prober on a machine that has a public IP.
 
--  Q: I don't like this or theres something wrong.
--  A: Submit an issue or a PR or simply for the repo.
+-  Q: I don't like this or there's something wrong.
+-  A: Submit an issue or a PR or simply fork the repo.
 
 
 
