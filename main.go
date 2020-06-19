@@ -102,7 +102,7 @@ func (n *nfs) mount(ctx context.Context) error {
 	}
 	n.log.WithFields(logrus.Fields{"success": true, "address": n.address, "mountPoint": n.mountPoint, "duration": duration}).Info("mount successful")
 	if *usePrometheus {
-		status.WithLabelValues(n.address, n.mountPoint).Set(0)
+		status.WithLabelValues(n.address, n.mountPoint).Set(1)
 		mountAttempts.WithLabelValues(n.address, n.mountPoint, "true").Observe(duration)
 	}
 	return nil
@@ -149,7 +149,7 @@ func (n *nfs) writeTestFiles(ctx context.Context) {
 		if err != nil {
 			n.log.WithFields(logrus.Fields{"success": false, "address": n.address, "mountPoint": n.mountPoint, "err": err, "duration": duration, "file": testFileLocation}).Warn("could not write test file")
 			if *usePrometheus {
-				readAttempts.WithLabelValues(n.address, n.mountPoint, testFileLocation, "false").Observe(duration)
+				writeAttempts.WithLabelValues(n.address, n.mountPoint, testFileLocation, "false").Observe(duration)
 			}
 			continue
 		}
@@ -157,12 +157,12 @@ func (n *nfs) writeTestFiles(ctx context.Context) {
 		if len(b) != *testFileSize {
 			n.log.WithFields(logrus.Fields{"success": false, "address": n.address, "mountPoint": n.mountPoint, "err": fmt.Sprintf("got %d bytes from file, but expected %d bytes", len(b), *testFileSize), "duration": duration, "file": testFileLocation}).Warn("could not read test file")
 			if *usePrometheus {
-				readAttempts.WithLabelValues(n.address, n.mountPoint, testFileLocation, "false").Observe(duration)
+				writeAttempts.WithLabelValues(n.address, n.mountPoint, testFileLocation, "false").Observe(duration)
 			}
 		}
 		n.log.WithFields(logrus.Fields{"success": true, "address": n.address, "mountPoint": n.mountPoint, "duration": duration, "file": testFileLocation}).Info("write test file")
 		if *usePrometheus {
-			readAttempts.WithLabelValues(n.address, n.mountPoint, testFileLocation, "true").Observe(duration)
+			writeAttempts.WithLabelValues(n.address, n.mountPoint, testFileLocation, "true").Observe(duration)
 		}
 	}
 }
