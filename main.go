@@ -51,6 +51,7 @@ var (
 	interval           = flag.String("interval", "60s", "interval between probes, default 60s")
 	timeout            = flag.String("timeout", "250ms", "timeout of probe operation, default 250ms")
 	webPort            = flag.Int("port", 8080, "port for web server to listen on")
+	version            = flag.String("nfs_version", "nfs", "nfs version to use, eg nfs, nfs3")
 )
 
 type nfs struct {
@@ -89,7 +90,7 @@ func (n *nfs) mount(ctx context.Context) error {
 	// Start Time to be used for all duration logs
 	startTime := time.Now()
 	// Use syscall to mount the NFS directory
-	err := syscall.Mount(fmt.Sprintf(":%s", n.mountPoint), fmt.Sprintf("%s/%s", *localMountLocation, n.address), "nfs", 0, fmt.Sprintf("nolock,addr=%s", n.address))
+	err := syscall.Mount(fmt.Sprintf(":%s", n.mountPoint), fmt.Sprintf("%s/%s", *localMountLocation, n.address), *version, 0, fmt.Sprintf("nolock,addr=%s", n.address))
 	duration := time.Since(startTime).Seconds()
 	if err != nil {
 		n.log.WithFields(logrus.Fields{"success": false, "address": n.address, "mountPoint": n.mountPoint, "err": err, "duration": duration}).Warn("could not mount")
