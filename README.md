@@ -1,7 +1,5 @@
 # NFS Prober
-Golang NFS prober to measure mounting and read/write performance of multiple NFS instances.
-
-Note: Linux Only
+Golang NFS prober to measure mounting and read/write performance of multiple NFS instances. (Linux Only)
 
 ## Prepare NFS instances
 
