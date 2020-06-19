@@ -1,6 +1,8 @@
 # NFS Prober
 Golang NFS prober to measure mounting and read/write performance of multiple NFS instances.
 
+Note: Linux Only
+
 ## Prepare NFS instances
 
 Create a folder called 'prober' in the root level of each NFS target as this application can only mount to the directory called prober, for safety reasons. This can be done like shown below.
