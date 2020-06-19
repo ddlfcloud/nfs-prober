@@ -9,6 +9,21 @@ $ mount 192.168.1.2:/nfs1 mymount && mkdir mymount/prober
 ```
 
 ## Running
+### Flags
+
+| Flag                 | Default       | Description  |
+| -------------------- |-------------|-----------|
+| --targets        | ""                  |    comma seperated list of targets in format ip:/mountPoint,ip:/mountPoint  |
+| --use_prometheus       | true                   | create a web endpoint and log timeseries metrics to that endpoint   |
+| --local_mount_dir      | "/etc/prober-nfs"      |   local directory to mount NFS targets in  |
+| --rw_test_files        | false                  |    read and write test files after mounting at each probe interation  |
+| --num_of_files         | 1                      |    number of test files to read and write to each NFS target  |
+| --file_size_bytes        | 200                  |    test file size in bytes |
+| --interval        | "60s"                  |    interval between each probe interation, valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h"  |
+| --timeout        | false                  |    timeout of probe operation, valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h"  |
+| --port        | 8080                  |    port for the web server to listen on  |
+
+
 
 ### Using Go
 ```bash
