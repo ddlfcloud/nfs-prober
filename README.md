@@ -46,9 +46,6 @@ docker run --privileged=true -p 8080:8080 nfs-prober --targets 192.168.1.2:/nfs0
 ### Metrics
 Metrics are served in the log lines or at: http://localhost:8080/metrics using prometheus data types https://prometheus.io/docs/concepts/data_model/
 
-### Changing Defaults 
-Please see main.go for available flags and their defaults.
-
 ## FAQ
 
 -  Q: Could this potentially overwrite my files ?
