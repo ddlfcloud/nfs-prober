@@ -141,7 +141,7 @@ func (n *nfs) writeTestFiles(ctx context.Context) {
 		b := make([]byte, *testFileSize)
 		_, err := rand.Read(b)
 		if err != nil {
-			n.log.WithFields(logrus.Fields{"success": false, "address": n.address, "mountPoint": n.mountPoint, "err": err, "file": testFileLocation}).Warn("could create test file")
+			n.log.WithFields(logrus.Fields{"success": false, "address": n.address, "mountPoint": n.mountPoint, "err": err, "file": testFileLocation}).Warn("could not create test file")
 			continue
 		}
 		startTime := time.Now()
