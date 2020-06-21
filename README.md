@@ -59,7 +59,7 @@ Metrics are served in the log stdout or at: http://localhost:8080/metrics using 
 -  A: Yes it can be, but you have to mount the NFS instance and you need root privileges to do that. Don't run this prober on a machine that has a public IP.
 
 - Q: Won't NFS cache the test files in some way since you're writing and reading to the same directory with the same file names ?
-- A: Every iteration of the prober reads random bytes from the "crypto/rand" library and writes them to the NFS, so every file is different each time.
+- A: No, every iteration of the prober reads random bytes from the "crypto/rand" library and writes them to the NFS, so every file is different each time.
 
 -  Q: I don't like this or there's something wrong.
 -  A: Submit an issue or a PR or simply fork the repo.
