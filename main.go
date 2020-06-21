@@ -230,6 +230,7 @@ func main() {
 				log.Printf("target %s was not in correct format", target)
 				os.Exit(1)
 			}
+			// Only mount to the "prober" directory. This should not be changed.
 			mountPoint := fmt.Sprintf("%s/%s", s[1], "prober")
 			address := s[0]
 			// Make all local directories needed for mounting
